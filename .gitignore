@@ -1,6 +1,6 @@
 __pycahce__/
 *.py[cod]
-
+venv/
 bin/
 build/
 dist/

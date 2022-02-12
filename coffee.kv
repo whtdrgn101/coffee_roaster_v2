@@ -1,0 +1,84 @@
+#:kivy 2.0
+##################################
+# Main Layout for Coffee Roaster #                             
+##################################
+<RootWidget>:
+    orientation: 'vertical'
+    GridLayout:
+        cols: 3
+        Label:
+            id: temp_label
+            text: 'Temperature (f)'
+            font_size: 64
+        Label:
+            id:temp_reading_label
+            size_hint_x: None
+            width: 150
+            text: '0'
+            font_size: 64
+        BoxLayout
+            id:control_layout
+            orientation: 'vertical'
+            Button:
+                id:start_roaster_button
+                text:"Start Roast"
+                font_size: 64
+                background_color: (0,1,0,1)
+                disabled: False
+                on_press:
+                    root._handle_start_roaster_button_click()
+            Button:
+                id:stop_roaster_button
+                text:"Stop Roast"
+                font_size: 64
+                background_color: (1,0,0,1)
+                disabled: True
+                on_press:
+                    root._handle_stop_roaster_button_click()   
+        Label:
+            id: target_temp_label
+            text: 'Target Temp (f)'
+            font_size: 64
+        Label:
+            id:target_temp_label
+            size_hint_x: None
+            width: 150
+            text: '300'
+            font_size: 64
+        BoxLayout:
+            id:temp_layout
+            orientation: 'vertical'
+            Button:
+                id:temp_down_large_button
+                text:"<<"
+                font_size: 64
+                disabled: True
+                on_press:
+                    root._handle_temp_down_l_button_click()
+            Button:
+                id:temp_down_small_button
+                text:"<"
+                font_size: 64
+                disabled: True
+                on_press:
+                    root._handle_temp_down_button_click()
+            Button:
+                id:temp_up_small_button
+                text:">"
+                font_size: 64
+                disabled: True
+                on_press:
+                    root._handle_temp_up_button_click()
+            Button:
+                id:temp_up_large_button
+                text:">>"
+                font_size: 64
+                disabled: True
+                on_press:
+                    root._handle_temp_up_l_button_click()
+    Label:
+        id:roaster_state_label
+        text: "Heating Element: False | Motor Running: False"
+        size_hint_y: None
+        height: 60
+        font_size: 36
