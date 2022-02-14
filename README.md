@@ -6,7 +6,7 @@ This project contains the microcontroller code to drive a DIY coffee roaster pro
 ## File Organization
 
 ### main.py
-This file is the main driver of the microcontroller.  It uses the classes in the utils/ folder to control the components of the coffee roaster.
+This file is the main driver of the microcontroller and the User-Interface that controls the roaster and displays current status.  It uses the classes in the utils/ folder to control the components of the coffee roaster and the Kivy UI framework as well.
 
 ### coffee.kv
 This file is the main UI layout code for the Kivy UI framework used for the main roaster code.  
@@ -19,6 +19,7 @@ Each component in the coffee roaster that needs controlled by microcontroller be
 
 ## References
 
+* [Kivy UI Framework](https://kivy.org/doc/stable/)
 * [MAX31856 Thermocouple Control](https://learn.adafruit.com/adafruit-max31856-thermocouple-amplifier/python-circuitpython)
 * [L298 Motor Controller](https://www.bluetin.io/python/gpio-pwm-raspberry-pi-h-bridge-dc-motor-control/)
 * [Project Documentation](https://docs.google.com/document/d/1oHwVflQFp4IHgEQ_DVCQFsYltsm2OGass9z3PHarOX0/edit?usp=sharing)
