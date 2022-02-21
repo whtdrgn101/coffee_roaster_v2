@@ -3,82 +3,112 @@
 # Main Layout for Coffee Roaster #                             
 ##################################
 <RootWidget>:
-    orientation: 'vertical'
-    GridLayout:
-        cols: 3
-        Label:
-            id: temp_label
-            text: 'Temperature (f)'
-            font_size: 64
-        Label:
-            id:temp_reading_label
-            size_hint_x: None
-            width: 150
-            text: '0.0'
-            font_size: 64
-        BoxLayout
-            id:control_layout
-            orientation: 'vertical'
-            Button:
-                id:start_roaster_button
-                text:"Start Roast"
-                font_size: 64
-                background_color: (0,1,0,1)
-                disabled: False
-                on_press:
-                    root._handle_start_roaster_button_click()
-            Button:
-                id:stop_roaster_button
-                text:"Stop Roast"
-                font_size: 64
-                background_color: (1,0,0,1)
-                disabled: True
-                on_press:
-                    root._handle_stop_roaster_button_click()   
-        Label:
-            id: target_temp_label
-            text: 'Target Temp (f)'
-            font_size: 64
-        Label:
-            id:target_temp_label
-            size_hint_x: None
-            width: 150
-            text: '300'
-            font_size: 64
+    do_default_tab: False
+    TabbedPanelItem:
+        id: tabbed_pannel_item_roaster
+        text: 'Roaster'
         BoxLayout:
-            id:temp_layout
+            id: roaster_boxed_layout
             orientation: 'vertical'
-            Button:
-                id:temp_down_large_button
-                text:"<<"
-                font_size: 64
-                disabled: True
-                on_press:
-                    root._handle_temp_down_l_button_click()
-            Button:
-                id:temp_down_small_button
-                text:"<"
-                font_size: 64
-                disabled: True
-                on_press:
-                    root._handle_temp_down_button_click()
-            Button:
-                id:temp_up_small_button
-                text:">"
-                font_size: 64
-                disabled: True
-                on_press:
-                    root._handle_temp_up_button_click()
-            Button:
-                id:temp_up_large_button
-                text:">>"
-                font_size: 64
-                disabled: True
-                on_press:
-                    root._handle_temp_up_l_button_click()
-    Label:
-        id:roaster_state_label
-        text: "Heating Element: OFF | Motor Running: OFF"
-        size_hint_y: None
-        height: 60
-        font_size: 36
+            GridLayout:
+                id: roaster_grid_layout
+                cols: 3
+                Label:
+                    id: temp_label
+                    text: 'Temperature (f)'
+                    font_size: 64
+                Label:
+                    id:temp_reading_label
+                    size_hint_x: None
+                    width: 150
+                    text: '0.0'
+                    font_size: 64
+                BoxLayout
+                    id:control_layout
+                    orientation: 'vertical'
+                    Button:
+                        id:start_roaster_button
+                        text:"Start Roast"
+                        font_size: 64
+                        background_color: (0,1,0,1)
+                        disabled: False
+                        on_press:
+                            root._handle_start_roaster_button_click()
+                    Button:
+                        id:stop_roaster_button
+                        text:"Stop Roast"
+                        font_size: 64
+                        background_color: (1,0,0,1)
+                        disabled: True
+                        on_press:
+                            root._handle_stop_roaster_button_click()  
+                    Button:
+                        id:cool_down_button
+                        text:"Cool Down"
+                        font_size: 64
+                        disabled: True
+                        on_press:
+                            root._handle_cool_down_button_click() 
+            Label:
+                id:roaster_state_label
+                text: "Heating Element: OFF | Motor Running: OFF"
+                size_hint_y: None
+                height: 60
+                font_size: 36
+    TabbedPanelItem:
+        id: tabbed_panel_item_settings
+        text: 'Settings'
+        GridLayout:
+            cols: 3
+            Label:
+                id: label_target_temp_setting
+                font_size: 44
+                halign: 'right'
+                text: 'Target Temp (f):'
+            Slider:
+                id: slider_target_temp
+                min: 350
+                max: 500
+                value: 400
+                step: 10
+                orientation: 'horizontal'
+            Label:
+                id: label_target_temp_value
+                font_size: 44
+                halign: 'left'
+                text: str(slider_target_temp.value)
+            Label:
+                id: label_motor_speed_setting
+                font_size: 44
+                halign: 'right'
+                text: 'Motor Speed:'
+            Slider:
+                id: slider_motor_speed
+                min: 10
+                max: 100
+                value: 50
+                step: 5
+                orientation: 'horizontal'
+            Label:
+                id: label_motor_speed_value
+                font_size: 44
+                halign: 'left'
+                text: str(slider_motor_speed.value)
+            Label:
+                id: label_cooldown_setting
+                font_size: 44
+                halign: 'right'
+                text: 'Cooldown Seconds:'
+            Slider:
+                id: slider_cooldown_time
+                min: 300
+                max: 600
+                value: 420
+                step: 30
+                orientation: 'horizontal'
+            Label:
+                id: label_cooldown_value
+                font_size: 44
+                halign: 'left'
+                text: str(slider_cooldown_time.value)
+
